@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Album = require('../models/album')
 const { searchForAlbum } = require('../utils/spotify')
-const { serachSuggestions } = require('../utils/spotify')
+// const { searchSuggestions } = require('../utils/spotify')
 
 // Get all albums /
 router.get('/', async (req, res) => {
@@ -50,14 +50,14 @@ router.post('/', async (req, res) => {
 })
 
 // autofill
-router.get('/search', async (req, res) => {
-    const { query, type } = req.query
-    if (!query || !type) {
-        return res.status(400).send("Query and type are required.")
-    }
+// router.get('/search', async (req, res) => {
+//     const { query, type } = req.query
+//     if (!query || !type) {
+//         return res.status(400).send("Query and type are required.")
+//     }
 
-    const results = await searchSuggestions(query, type)
-    res.json(results)
-})
+//     const results = await searchSuggestions(query, type)
+//     res.json(results)
+// })
 
 module.exports = router
