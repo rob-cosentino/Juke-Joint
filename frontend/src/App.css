@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.suggestions {
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.suggestions {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.suggestion:hover {
+  background-color: #f5f5f5;
+}
