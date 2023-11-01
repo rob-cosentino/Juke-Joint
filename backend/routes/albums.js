@@ -4,7 +4,7 @@ const Album = require('../models/album')
 const { searchForAlbum } = require('../utils/spotify')
 const { serachSuggestions } = require('../utils/spotify')
 
-// Get all albums
+// Get all albums /
 router.get('/', async (req, res) => {
     try {
         const albums = await Album.find()
