@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-function AddAlbumForm(props) {
+function AddAlbumForm({ onAdd }) {
     const [artistName, setArtistName] = useState('')
     const [albumName, setAlbumName] = useState('')
     const [artistSuggestions, setArtistSuggestions] = useState([])
     const [albumSuggestions, setAlbumSuggestions] = useState([])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await axios.post('http://localhost:5002/api/albums', { artistName, albumName })
+            onAdd(response.data)
+        } catch (error) {
+            console.error('Error adding album:', error)
+        }
+    }
 
     // useEffect(() => {
     //     console.log("Artist Name:", artistName)
@@ -92,25 +102,6 @@ function AddAlbumForm(props) {
         }
     }
 
-    // const fetchAndSetSuggestions = async (query, type, setterFunction) => {
-    //     if (query.length < 2) {
-    //         setterFunction([])
-    //         return
-    //     }
-
-    //     if (cancel !== undefined) {
-    //         cancel()
-    //     }
-
-    //     const data = await fetchSuggestions(query, type);
-    //     if (type === "artist" && data && data.artists && data.artists.items) {
-    //         setterFunction(data.artists.items);
-    //     }
-    //     if (type === "album" && data && data.albums && data.albums.items) {
-    //         setterFunction(data.albums.items);
-    //     }
-    // }
-
     const fetchSuggestions = async (query, type) => {
         try {
             const response = await axios.get(`http://localhost:5002/api/albums/search?query=${query}&type=${type}`)
@@ -120,40 +111,6 @@ function AddAlbumForm(props) {
             console.error('Error fetching suggestions:', error)
         }
         return []
-    }
-
-    // const fetchSuggestions = async (query, type) => {
-    //     try {
-    //         const response = await axios.get(
-    //             `http://localhost:5002/api/albums/search?query=${query}&type=${type}`,
-    //             { 
-    //                 cancelToken: new CancelToken(function executor(c) {
-    //                     // An executor function receives a cancel function as a parameter
-    //                     cancel = c;
-    //                 })
-    //             }
-    //         );
-    //         console.log('Received suggestions:', response.data);
-    //         return response.data;
-    //     } catch (error) {
-    //         if (axios.isCancel(error)) {
-    //             console.log('Request canceled', error.message);
-    //         } else {
-    //             console.error('Error fetching suggestions:', error);
-    //         }
-    //     }
-    //     return [];
-    // }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        try {
-            const response = await axios.post('http://localhost:5002/api/albums', { artistName, albumName })
-            console.log(response.data)
-            // TODO: Update the frontend's state to display the new album
-        } catch (error) {
-            console.error('Error adding album:', error.response ? error.response.data : error)
-        }
     }
 
     return (

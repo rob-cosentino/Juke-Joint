@@ -2,21 +2,21 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import AlbumCard from './AlbumCard'
 
-function AlbumGallery() {
-    const [albums, setAlbums] = useState([])
+function AlbumGallery({ albums, setAlbums }) {
+    // const [albums, setAlbums] = useState([])
 
-    useEffect(() => {
-        const fetchAlbums = async () => {
-            try {
-                const response = await axios.get('http://localhost:5002/api/albums')
-                setAlbums(response.data)
-            } catch (error) {
-                console.error('Error fetching albums:', error)
-            }
-        };
+    // useEffect(() => {
+    //     const fetchAlbums = async () => {
+    //         try {
+    //             const response = await axios.get('http://localhost:5002/api/albums')
+    //             setAlbums(response.data)
+    //         } catch (error) {
+    //             console.error('Error fetching albums:', error)
+    //         }
+    //     };
 
-        fetchAlbums()
-    }, []);
+    //     fetchAlbums()
+    // }, []);
 
     const handleDelete = async (albumId) => {
         try {
