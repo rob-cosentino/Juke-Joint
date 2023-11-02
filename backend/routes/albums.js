@@ -14,18 +14,30 @@ router.get('/', async (req, res) => {
     }
 });
 
+// router.delete('/:id', async (req, res) => {
+//     try {
+//         const album = await Album.findById(req.params.id)
+//         if (!album) return res.status(404).json({ message: 'Album not found' })
+
+//         await album.remove()
+//         res.json({ message: 'Album deleted successfully '})
+//     } catch (err) {
+//         res.status(500).json({ message: err.message })
+//     }
+// });
 router.delete('/:id', async (req, res) => {
     try {
-        const album = await Album.findById(req.params.id)
-        if (!album) return res.status(404).json({ message: 'Album not found' })
+        const result = await Album.findByIdAndDelete(req.params.id);
 
-        await album.remove()
-        res.json({ message: 'Album deleted successfully '})
+        if (!result) {
+            return res.status(404).json({ message: 'Album not found' });
+        }
+        
+        res.json({ message: 'Album deleted successfully' });
     } catch (err) {
-        res.status(500).json({ message: err.message })
+        res.status(500).json({ message: 'Internal server error', error: err.message });
     }
 });
-
 
 router.post('/', async (req, res) => {
     console.log("Inside /app/albums POST route")
