@@ -12,6 +12,11 @@ function AddAlbumForm({ onAdd }) {
         try {
             const response = await axios.post('http://localhost:5002/api/albums', { artistName, albumName })
             onAdd(response.data)
+            // clear input fields after successful addition
+            setArtistName('')
+            setAlbumName('')
+            setArtistSuggestions([])
+            setAlbumSuggestions([])
         } catch (error) {
             console.error('Error adding album:', error)
         }
@@ -123,7 +128,7 @@ function AddAlbumForm({ onAdd }) {
                     type="text"
                     placeholder="Enter album name..."
                     value={albumName}
-                    onChange={handleAlbumInputChange}
+                    onChange={(e) => setAlbumName(e.target.value)}           // {handleAlbumInputChange}
                 />
                 <ul>
                 {albumSuggestions.map(suggestion => (
@@ -143,7 +148,7 @@ function AddAlbumForm({ onAdd }) {
                     type="text"
                     placeholder="Artist Name"
                     value={artistName}
-                    onChange={handleArtistInputChange}
+                    onChange={(e) => setArtistName(e.target.value)}        // {handleArtistInputChange}
                 />
                <ul>
                 {artistSuggestions.map(suggestion => (
