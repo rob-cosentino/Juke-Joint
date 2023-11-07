@@ -17,53 +17,11 @@ function AddAlbumForm({ onAdd }) {
             setAlbumName('')
             setArtistSuggestions([])
             setAlbumSuggestions([])
+            console.log(response.data)
         } catch (error) {
             console.error('Error adding album:', error)
         }
     }
-
-    // useEffect(() => {
-    //     console.log("Artist Name:", artistName)
-    //     console.log("Artist Suggestions:", artistSuggestions)
-    //     console.log("Album name:", albumName)
-    //     console.log("Album Suggestions:", albumSuggestions)
-    // }, [artistName, artistSuggestions, albumName, albumSuggestions])
-
-    // const handleArtistInputChange = async (e) => {
-    //     const inputValue = e.target.value
-    //     setArtistName(inputValue);
-
-    //     if (!inputValue.trim()) {
-    //         setArtistSuggestions([])
-    //         return
-    //     }
-
-    //     const data = await fetchSuggestions(inputValue, "artist")
-    //     setArtistSuggestions(data.artists.items)
-    // }
-
-    // const handleAlbumInputChange = async (e) => {
-    //     const inputValue = e.target.value
-    //     setAlbumName(inputValue)
-
-    //     if (!inputValue.trim()) {
-    //         setAlbumSuggestions([])
-    //         return
-    //     }
-    //     const data = await fetchSuggestions(inputValue, "album")
-    //     setAlbumSuggestions(data.albums.items)
-    // }
-
-    // const fetchSuggestions = async (query, type) => {
-    //     try {
-    //         const response = await axios.get(`http://localhost:5002/api/albums/search?query=${query}&type=${type}`)
-    //         console.log('Received suggestions:', response.data)
-    //         return response.data
-    //     } catch (error) {
-    //         console.error('Error fetching suggestions:', error)
-    //     }
-    //     return []
-    // }
 
     useEffect(() => {
         if (!artistName.trim()) {
@@ -119,7 +77,7 @@ function AddAlbumForm({ onAdd }) {
     }
 
     return (
-    <div>
+    <div className="album-form">
         <h2>Add Album</h2>
         <form onSubmit={handleSubmit}>
             <div>

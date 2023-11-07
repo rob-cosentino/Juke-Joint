@@ -27,7 +27,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Juke Joint</h1>
+      {/* <h1>Juke Joint</h1> */}
+      <header>
+        <p>Welcome to the Juke Joint! While you're here, you can create your own custom jukebox - it's hooked up with Spotify, so you should be able to fetch just about any album out there! Simply fill out the input fields and click 'Add Album' to get started. Removing an album from your jukebox is as easy as clicking 'Delete' underneath the album information.</p>
+      </header>
       <AddAlbumForm onAdd={handleAddAlbum}/>
       <AlbumGallery albums={albums} setAlbums={setAlbums}/>
        {/* TODO: ADD a component to display albums */}

@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background-image: url('/public/juke-joint.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  overflow: auto;
+  /* overflow: hidden; */
 }
 
 .App-logo {
@@ -36,6 +42,44 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Add these styles to App.css */
+
+header {
+  background-color: #A7714Bcc;
+  height: 100px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  margin: 20px 100px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.album-card {
+  background: #A7714Bcc;
+  padding: 20px;
+  margin: 20px;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.album-card img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.album-form {
+  margin: 20px auto;
+  /* padding: ; */
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply styles to buttons and form fields as desired */
 
 .suggestions {
   border: 1px solid #ccc;
