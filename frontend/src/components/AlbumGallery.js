@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import AlbumCard from './AlbumCard'
 
-function AlbumGallery({ albums, setAlbums }) {
+function AlbumGallery({ albums, setAlbums, onTrackSelect }) {
     // const [albums, setAlbums] = useState([])
 
     // useEffect(() => {
@@ -30,7 +30,12 @@ function AlbumGallery({ albums, setAlbums }) {
     return (
         <div className="album-gallery">
             {albums.map(album => (
-                <AlbumCard key={album._id} album={album} onDelete={handleDelete} />
+                <AlbumCard
+                key={album._id} 
+                album={album} 
+                onDelete={handleDelete} 
+                onTrackSelect={onTrackSelect}
+            />
             ))}
         </div>
     )

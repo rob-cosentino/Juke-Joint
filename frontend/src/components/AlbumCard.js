@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AlbumCard({ album, onDelete }) {
+function AlbumCard({ album, onDelete, onTrackSelect }) {
     return (
         <div className="album-card">
             <img src={album.albumCover} alt={album.albumName} className="album-cover" />
@@ -14,7 +14,12 @@ function AlbumCard({ album, onDelete }) {
             <div className="album-tracks">
                 <ul>
                     {album.trackList.map((trackName, index) => (
-                        <li key={index}>{trackName}</li>
+                        <li key={index} onClick={() => {
+                            console.log(`Clicked on track: ${trackName}`);
+                            onTrackSelect(trackName, album.artistName)
+                        }}>
+                            {trackName}
+                        </li>
                     ))}
                 </ul>
             </div>
