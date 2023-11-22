@@ -28,12 +28,14 @@ function App() {
   const onTrackSelect = async (trackName, artistName) => {
     console.log(`Track selected: ${trackName} by ${artistName}`)
     try {
-      const response = await axios.post('http://54.188.27.139/youtube/search', {
+      const response = await axios.post('http://localhost:5002/proxy/youtube/search', {
         songName: trackName,
         artistName: artistName
       });
+      const videoUrl = response.data.url;
+      const videoId = new URL(videoUrl).searchParams.get('v')
       console.log('Microservice response:', response.data)
-      setSelectedVideoUrl(response.data.url)
+      setSelectedVideoUrl(`https://www.youtube.com/embed/${videoId}`)
     } catch (error) {
       console.error('Error fetching YouTube URL:', error)
     }
