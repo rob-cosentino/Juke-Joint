@@ -1,23 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import axios from 'axios'
 import AlbumCard from './AlbumCard'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
 
 function AlbumGallery({ albums, setAlbums, onTrackSelect }) {
-    // const [albums, setAlbums] = useState([])
-
-    // useEffect(() => {
-    //     const fetchAlbums = async () => {
-    //         try {
-    //             const response = await axios.get('http://localhost:5002/api/albums')
-    //             setAlbums(response.data)
-    //         } catch (error) {
-    //             console.error('Error fetching albums:', error)
-    //         }
-    //     };
-
-    //     fetchAlbums()
-    // }, []);
-
     const handleDelete = async (albumId) => {
         try {
             await axios.delete(`http://localhost:5002/api/albums/${albumId}`)
@@ -29,14 +20,25 @@ function AlbumGallery({ albums, setAlbums, onTrackSelect }) {
 
     return (
         <div className="album-gallery">
-            {albums.map(album => (
-                <AlbumCard
-                key={album._id} 
-                album={album} 
-                onDelete={handleDelete} 
-                onTrackSelect={onTrackSelect}
-            />
-            ))}
+                <Swiper
+                    modules={[Navigation, Pagination]}
+                    spaceBetween={50}
+                    slidesPerView={3}
+                    navigation
+                    pagination={{  clickable: true }}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                >
+                    {albums.map(album => (
+                        <SwiperSlide key={album._id}>
+                            <AlbumCard
+                                album={album} 
+                                onDelete={handleDelete} 
+                                onTrackSelect={onTrackSelect}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
         </div>
     )
 }

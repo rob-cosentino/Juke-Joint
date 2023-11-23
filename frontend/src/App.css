@@ -56,6 +56,28 @@ header {
   padding: 5px;
 }
 
+.album-gallery {
+  width: 80%;
+  max-width: 1200px;
+  height: 500px;
+  margin: 20px auto;
+}
+
+/* Swiper */
+.swiper-button-next, .swiper.button-prev {
+  color: white;
+}
+
+.swiper-pagination-bullet {
+  background: white;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .album-card {
   background: #A7714Bcc;
   padding: 20px;

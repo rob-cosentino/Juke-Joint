@@ -10,6 +10,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "swiper": "^11.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -38,7 +39,7 @@
     ]
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
-    "babel": "@babel/plugin-proposal-private-property-in-object"
+    "babel": "@babel/plugin-proposal-private-property-in-object",
+    "nodemon": "^3.0.1"
   }
 }
