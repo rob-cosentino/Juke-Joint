@@ -103,7 +103,8 @@ header {
   width: 300px;
   height: 280px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: yellow;
+  color: black;
+  font-weight: 600;
 }
 
 /* Apply styles to buttons and form fields as desired */
