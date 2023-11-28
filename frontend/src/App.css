@@ -64,7 +64,7 @@ header {
 }
 
 /* Swiper */
-.swiper-button-next, .swiper.button-prev {
+.swiper-button-next, .swiper-button-prev {
   color: white;
 }
 
@@ -93,12 +93,17 @@ header {
 }
 
 .album-form {
+  background-image: url('/public/jukebox-asset3.png');
+  background-size: cover;
+  background-position: center;
   margin: 20px auto;
-  /* padding: ;. */
-  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  /* background: rgba(255, 255, 255, 0.9); */
   border-radius: 10px;
   width: 300px;
+  height: 280px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: yellow;
 }
 
 /* Apply styles to buttons and form fields as desired */
@@ -116,4 +121,8 @@ header {
 
 .suggestion:hover {
   background-color: #f5f5f5;
+}
+
+#ytplayer {
+  z-index: 10000;
 }

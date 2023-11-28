@@ -78,7 +78,7 @@ function AddAlbumForm({ onAdd }) {
 
     return (
     <div className="album-form">
-        <h2>Add Album</h2>
+        <h2 id="album-form-header">Add Album</h2>
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Album Name:</label>

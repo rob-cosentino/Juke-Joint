@@ -8,7 +8,7 @@ function AlbumCard({ album, onDelete, onTrackSelect }) {
                 <div className="album-details">
                     <h3>{album.albumName}</h3>
                     <p>{album.artistName}</p>
-                    <p>Genre: {album.genre}</p>
+                    {/* <p>Genre: {album.genre}</p> */}
                     <p>Released: {album.yearReleased}</p>
                 </div>
             <div className="album-tracks">

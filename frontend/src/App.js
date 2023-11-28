@@ -45,24 +45,24 @@ function App() {
     <div className="App">
       {/* <h1>Juke Joint</h1> */}
       <header>
-        <p>Welcome to the Juke Joint! While you're here, you can create your own custom jukebox - it's hooked up with Spotify, so you should be able to fetch just about any album out there! Simply fill out the input fields and click 'Add Album' to get started. Removing an album from your jukebox is as easy as clicking 'Delete' underneath the album information.</p>
+        <p>Welcome to the Juke Joint! While you're here, you can create your own custom jukebox filled with your favorite tunes - and listen to them! The jukebox is hooked up to Spotify, so you should be able to fetch just about any album out there! To begin listening to your favorite audio and building your collection, simply fill out the input fields and click 'Add Album' to get started. Accuracy is crucial when sending the album rquest to Spotify, so I recommend utilizing the auto-fill feature by directly clicking on your desired album from the list of suggestions that will appear after you start typing. Removing an album from your jukebox is as easy as clicking 'Delete' underneath the album information.</p>
       </header>
       <AddAlbumForm onAdd={handleAddAlbum}/>
+      {selectedVideoUrl && (
+        <iframe
+            id="ytplayer"
+            type="text/html"
+            width="400"
+            height="240"
+            src={selectedVideoUrl}
+            frameBorder="0"
+        ></iframe>
+      )}
       <AlbumGallery
           albums={albums} 
           setAlbums={setAlbums}
           onTrackSelect={onTrackSelect}
       />
-      {selectedVideoUrl && (
-        <iframe
-            id="ytplayer"
-            type="text/html"
-            width="640"
-            height="360"
-            src={selectedVideoUrl}
-            frameBorder="0"
-        ></iframe>
-      )}
     </div>
   );
 }
