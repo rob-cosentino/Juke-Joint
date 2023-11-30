@@ -127,3 +127,32 @@ header {
 #ytplayer {
   z-index: 10000;
 }
+
+.input-container {
+  position: relative;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #A7714Bcc;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid#ddd;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestions-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f2f2f2;
+}

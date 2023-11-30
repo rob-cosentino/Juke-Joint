@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
+import useOutsideClick from '../useOutsideClick'
 
 function AddAlbumForm({ onAdd }) {
     const [artistName, setArtistName] = useState('')
@@ -24,20 +25,20 @@ function AddAlbumForm({ onAdd }) {
     }
 
     useEffect(() => {
-        if (!artistName.trim()) {
-            setArtistSuggestions([]);
-        } else {
-            fetchAndSetSuggestions(artistName, "artist", setArtistSuggestions);
-        }
-    }, [artistName]);
-
-    useEffect(() => {
         if (!albumName.trim()) {
             setAlbumSuggestions([]);
         } else {
             fetchAndSetSuggestions(albumName, "album", setAlbumSuggestions);
         }
     }, [albumName]);
+
+    useEffect(() => {
+        if (!artistName.trim()) {
+            setArtistSuggestions([]);
+        } else {
+            fetchAndSetSuggestions(artistName, "artist", setArtistSuggestions);
+        }
+    }, [artistName]);
 
     const handleArtistInputChange = (e) => {
         setArtistName(e.target.value);
@@ -76,48 +77,65 @@ function AddAlbumForm({ onAdd }) {
         return []
     }
 
+    const hideSuggestions = () => {
+        setArtistSuggestions([]);
+        setAlbumSuggestions([]);
+    };
+
+    const ref = useRef();
+    useOutsideClick(ref, hideSuggestions)
+
+
     return (
-    <div className="album-form">
+    <div className="album-form" ref={ref}>
         <h2 id="album-form-header">Add Album</h2>
         <form onSubmit={handleSubmit}>
-            <div>
-                <label>Album Name:</label>
-                <input
-                    type="text"
-                    placeholder="Enter album name..."
-                    value={albumName}
-                    onChange={(e) => setAlbumName(e.target.value)}           // {handleAlbumInputChange}
-                />
-                <ul>
-                {albumSuggestions.map(suggestion => (
-                    <li key={suggestion.id} onClick={() => {
-                        setAlbumName(suggestion.name);
-                        setArtistName(suggestion.artists[0].name);
-                    }}>
-                        {suggestion.name} by {suggestion.artists[0].name}
-                    </li>
-                ))}
+        <div className="input-container">
+            <label>Album Name:</label>
+            <input
+                type="text"
+                placeholder="Enter album name..."
+                value={albumName}
+                onChange={(e) => setAlbumName(e.target.value)}
+            />
+            {albumSuggestions.length > 0 && (
+                <ul className="suggestions-list">
+                    {albumSuggestions.slice(0, 4).map(suggestion => ( // Limit to 4 suggestions
+                        <li key={suggestion.id} onClick={() => {
+                            setAlbumName(suggestion.name);
+                            setArtistName(suggestion.artists[0].name);
+                            hideSuggestions()
+                        }}>
+                            {suggestion.name} by {suggestion.artists[0].name}
+                        </li>
+                    ))}
                 </ul>
-            </div>
+            )}
+        </div>
 
-            <div>
-                <label>Artist Name:</label>
-                <input
-                    type="text"
-                    placeholder="Artist Name"
-                    value={artistName}
-                    onChange={(e) => setArtistName(e.target.value)}        // {handleArtistInputChange}
-                />
-               <ul>
-                {artistSuggestions.map(suggestion => (
-                    <li key={suggestion.id} onClick={() => setArtistName(suggestion.name)}>
-                        {suggestion.name}
-                    </li>
-                ))}
+        <div className="input-container">
+            <label>Artist Name:</label>
+            <input
+                type="text"
+                placeholder="Artist Name"
+                value={artistName}
+                onChange={(e) => setArtistName(e.target.value)}
+            />
+            {artistSuggestions.length > 0 && (
+                <ul className="suggestions-list">
+                    {artistSuggestions.slice(0, 4).map(suggestion => (
+                        <li key={suggestion.id} onClick={() => {
+                            setArtistName(suggestion.name);
+                            hideSuggestions();
+                        }}>
+                            {suggestion.name}
+                        </li>
+                    ))}
                 </ul>
-            </div>
-    
-            <button type="submit">Add Album</button>
+            )}
+        </div>
+
+        <button type="submit">Add Album</button>
         </form>
     </div>
     );
@@ -126,3 +144,51 @@ function AddAlbumForm({ onAdd }) {
 
 
 export default AddAlbumForm;
+
+
+
+// return (
+//     <div className="album-form">
+//         <h2 id="album-form-header">Add Album</h2>
+//         <form onSubmit={handleSubmit}>
+//             <div>
+//                 <label>Album Name:</label>
+//                 <input
+//                     type="text"
+//                     placeholder="Enter album name..."
+//                     value={albumName}
+//                     onChange={(e) => setAlbumName(e.target.value)}           // {handleAlbumInputChange}
+//                 />
+//                 <ul>
+//                 {albumSuggestions.map(suggestion => (
+//                     <li key={suggestion.id} onClick={() => {
+//                         setAlbumName(suggestion.name);
+//                         setArtistName(suggestion.artists[0].name);
+//                     }}>
+//                         {suggestion.name} by {suggestion.artists[0].name}
+//                     </li>
+//                 ))}
+//                 </ul>
+//             </div>
+
+//             <div>
+//                 <label>Artist Name:</label>
+//                 <input
+//                     type="text"
+//                     placeholder="Artist Name"
+//                     value={artistName}
+//                     onChange={(e) => setArtistName(e.target.value)}        // {handleArtistInputChange}
+//                 />
+//                <ul>
+//                 {artistSuggestions.map(suggestion => (
+//                     <li key={suggestion.id} onClick={() => setArtistName(suggestion.name)}>
+//                         {suggestion.name}
+//                     </li>
+//                 ))}
+//                 </ul>
+//             </div>
+    
+//             <button type="submit">Add Album</button>
+//         </form>
+//     </div>
+//     );
