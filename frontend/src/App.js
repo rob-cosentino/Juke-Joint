@@ -45,8 +45,9 @@ function App() {
     <div className="App">
       {/* <h1>Juke Joint</h1> */}
       <header>
-        <p>Welcome to the Juke Joint! While you're here, you can create your own custom jukebox filled with your favorite tunes - and listen to them! The jukebox is hooked up to Spotify, so you should be able to fetch just about any album out there! To begin listening to your favorite audio and building your collection, simply fill out the input fields and click 'Add Album' to get started. Accuracy is crucial when sending the album rquest to Spotify, so I recommend utilizing the auto-fill feature by directly clicking on your desired album from the list of suggestions that will appear after you start typing. Removing an album from your jukebox is as easy as clicking 'Delete' underneath the album information.</p>
+        <p>Hello and welcome to the Juke Joint! If you like music, you are in the right place! While you're here, you can curate your own personal album collection and jukebox for viewing and listening purposes. Begin by simply typing in an album and artist name and hitting the 'Add Album' button. To listen to any particular track, simply click on it and utilize the pop-up youtube player. You can delete an album from the jukebox by simply clicing the 'Delete' button at the bottom of the album card. Enjoy!</p>
       </header>
+      {/* <h1 id="addAlbum">Add Album</h1> */}
       <AddAlbumForm onAdd={handleAddAlbum}/>
       {selectedVideoUrl && (
         <iframe

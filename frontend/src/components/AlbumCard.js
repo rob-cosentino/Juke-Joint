@@ -14,7 +14,7 @@ function AlbumCard({ album, onDelete, onTrackSelect }) {
             <div className="album-tracks">
                 <ul>
                     {album.trackList.map((trackName, index) => (
-                        <li key={index} onClick={() => {
+                        <li key={index} className="track-item" onClick={() => {
                             console.log(`Clicked on track: ${trackName}`);
                             onTrackSelect(trackName, album.artistName)
                         }}>

@@ -14,17 +14,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const album = await Album.findById(req.params.id)
-//         if (!album) return res.status(404).json({ message: 'Album not found' })
-
-//         await album.remove()
-//         res.json({ message: 'Album deleted successfully '})
-//     } catch (err) {
-//         res.status(500).json({ message: err.message })
-//     }
-// });
 router.delete('/:id', async (req, res) => {
     try {
         const result = await Album.findByIdAndDelete(req.params.id);

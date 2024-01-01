@@ -54,6 +54,7 @@ header {
   margin: 20px 100px;
   border-radius: 10px;
   padding: 5px;
+  font-weight: 600;
 }
 
 .album-gallery {
@@ -100,14 +101,47 @@ header {
   padding: 20px;
   /* background: rgba(255, 255, 255, 0.9); */
   border-radius: 10px;
-  width: 300px;
-  height: 280px;
+  width: 220px;
+  height: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: black;
   font-weight: 600;
 }
 
-/* Apply styles to buttons and form fields as desired */
+.album-form input {
+  width: 80%;
+  padding: 6px;
+  border-radius: 5px;
+  border: 4px solid black;
+  font-size: 14px;
+  font-weight: 900;
+  color: black;
+}
+
+.input-album-label {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 30px;
+  background-color: #A7714B;
+  border: 4px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.input-artist-label {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 30px;
+  background-color: #A7714B;
+  border: 4px solid black;
+  border-radius: 5px;
+  padding: 3px;
+  margin-top: 5px;
+}
+
+.album-form button {
+  width: 100%;
+  padding: 4px;
+  margin-top: 10px;
+}
 
 .suggestions {
   border: 1px solid #ccc;
@@ -130,6 +164,7 @@ header {
 
 .input-container {
   position: relative;
+  /* background-color: #A7714Bcc; */
 }
 
 .suggestions-list {
@@ -155,4 +190,18 @@ header {
 
 .suggestions-list li:hover {
   background-color: #f2f2f2;
+}
+
+/* #album-form-header {
+  color: rgb(0, 0, 0);
+  font-size:43px;
+  background-color: #A7714Bcc;
+} */
+
+/* #addAlbum {
+  font-size:44px;
+} */
+
+.track-item {
+  cursor: pointer;
 }
