@@ -3,6 +3,7 @@ import axios from 'axios'
 import useOutsideClick from '../useOutsideClick'
 
 function AddAlbumForm({ onAdd }) {
+    // state declarations
     const [artistName, setArtistName] = useState('')
     const [albumName, setAlbumName] = useState('')
     const [artistSuggestions, setArtistSuggestions] = useState([])
@@ -59,8 +60,6 @@ function AddAlbumForm({ onAdd }) {
         setIsUserTypingArtist(false)
         hideSuggestions()
     }
-
-    
 
     const fetchAndSetSuggestions = async (query, type, setterFunction) => {
         if (query.length < 2) {
