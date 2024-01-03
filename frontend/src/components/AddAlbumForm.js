@@ -13,7 +13,7 @@ function AddAlbumForm({ onAdd }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:5002/api/albums', { artistName, albumName })
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/albums`, { artistName, albumName })
             onAdd(response.data)
             // clear input fields after successful addition
             setArtistName('')
@@ -78,7 +78,7 @@ function AddAlbumForm({ onAdd }) {
 
     const fetchSuggestions = async (query, type) => {
         try {
-            const response = await axios.get(`http://localhost:5002/api/albums/search?query=${query}&type=${type}`)
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/albums/search?query=${query}&type=${type}`)
             console.log('Received suggestions:', response.data)
             return response.data
         } catch (error) {

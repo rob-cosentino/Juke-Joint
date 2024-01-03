@@ -11,7 +11,7 @@ import 'swiper/css/pagination'
 function AlbumGallery({ albums, setAlbums, onTrackSelect }) {
     const handleDelete = async (albumId) => {
         try {
-            await axios.delete(`http://localhost:5002/api/albums/${albumId}`)
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/albums/${albumId}`)
             setAlbums(albums.filter(album => album._id !== albumId))
         } catch (error) {
             console.error('Error deleting album:'. error)

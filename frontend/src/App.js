@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
-        const response = await axios.get('http://localhost:5002/api/albums');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/albums`);
         setAlbums(response.data);
       } catch (error) {
         console.error('Error fetching albums:', error);
@@ -28,7 +28,7 @@ function App() {
   const onTrackSelect = async (trackName, artistName) => {
     console.log(`Track selected: ${trackName} by ${artistName}`)
     try {
-      const response = await axios.post('http://localhost:5002/proxy/youtube/search', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/proxy/youtube/search`, {
         songName: trackName,
         artistName: artistName
       });
