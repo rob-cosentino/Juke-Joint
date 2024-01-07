@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   const handleAddAlbum = (album) => {
-    setAlbums([...albums, album]);
+    setAlbums([album, ...albums]);
   };
 
   const onTrackSelect = async (trackName, artistName) => {
@@ -47,7 +47,6 @@ function App() {
       <header>
         <p>Hello and welcome to the Juke Joint! If you like music, you are in the right place! While you're here, you can curate your own personal album collection and jukebox for viewing and listening purposes. Begin by simply typing in an album and artist name in the mini jukebox below and hitting the 'Add Album' button. To listen to any particular track, simply click on it and utilize the pop-up youtube player. You can delete an album from the jukebox by simply clicking the 'Delete' button at the bottom of the album card. Enjoy!</p>
       </header>
-      {/* <h1 id="addAlbum">Add Album</h1> */}
       <AddAlbumForm onAdd={handleAddAlbum}/>
       {selectedVideoUrl && (
         <iframe

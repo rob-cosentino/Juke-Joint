@@ -1,10 +1,14 @@
+// Album route definitions using Express Router 
+// This module handles requests related to album operations like CRUD
 const express = require('express')
 const router = express.Router()
 const Album = require('../models/album')
 const { searchForAlbum } = require('../utils/spotify')
 const { searchSuggestions } = require('../utils/spotify')
 
-// Get all albums /
+
+// Retrieves all albums from the database
+// GET /api/albums
 router.get('/', async (req, res) => {
     try {
         const albums = await Album.find()
@@ -14,6 +18,8 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Deletes a specific album by ID from the database 
+// DELETE /api/albums/:id
 router.delete('/:id', async (req, res) => {
     try {
         const result = await Album.findByIdAndDelete(req.params.id);
@@ -28,6 +34,9 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// Adds a new album to the database after fetching details from Spotify API
+// Calls searchForAlbum from spotify.js utility 
+// POST /api/albums 
 router.post('/', async (req, res) => {
     console.log("Inside /app/albums POST route")
     const { artistName, albumName } = req.body
@@ -50,8 +59,12 @@ router.post('/', async (req, res) => {
     }
 })
 
-// autofill
+// Autofill suggestions for album and artist names 
+// Provides search suggestions by querying the Spotify API
+// Calls searchSuggestions from spotify.js utility 
+// GET /api/albums/search
 router.get('/search', async (req, res) => {
+    
     const { query, type } = req.query
 
     if (!query || !type) {

@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 
+// Defines the schema for the 'Album' model using Mongoose
+// This schema will be used to create and manage documents in the album collection 
+// on MongoDB
 const albumSchema = new mongoose.Schema({
     artistName: {
         type: String,

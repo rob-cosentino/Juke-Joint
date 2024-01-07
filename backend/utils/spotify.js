@@ -1,9 +1,14 @@
+// Utility functions for interacting with the SPotofy API
+// Includes authentification and data fetching 
+
 const axios = require('axios')
 const btoa = require('btoa')
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
+// Fetches search suggestions for albums/artists from Spotify API based
+// on query and type (artist or album)
 const searchSuggestions = async (query, type) => {
     if (!query.trim()) {
         return {}
@@ -26,6 +31,7 @@ const searchSuggestions = async (query, type) => {
     }
 }
 
+// Authenticates with Spotify API and retrieves an access token 
 const getSpotifyToken = async () => {
     try {
         const response = await axios.post('https://accounts.spotify.com/api/token', 'grant_type=client_credentials', {
@@ -40,6 +46,8 @@ const getSpotifyToken = async () => {
     }
 };
 
+// Searches for a specific album on Spotify using artist name and album name
+// Returns detailed album data including tracklist
 const searchForAlbum = async (artistName, albumName) => {
     const token = await getSpotifyToken()
     console.log('Fetched Token:', token)
@@ -81,6 +89,7 @@ const searchForAlbum = async (artistName, albumName) => {
     }
 }
 
+// Retreives the tracklist of a specific album from Spotify 
 const getAlbumTracklist = async (albumId) => {
     const token = await getSpotifyToken()
 
