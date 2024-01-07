@@ -1,0 +1,4 @@
+This application utilizes the Spotify and Youtube APIs in order to provide the user with the experience of creating their own digital album collection from scratch. The interface is supposed to mimic an old-fashioned jukebox (via a caurosel-style 'slider' in the vain of actual old jukeboxes)
+that has the ability to play any track from any album contained within the jukebox. The application utilizes CRUD operations for the album collection with data being stored in MongoDB. The Spotify API provides all of the 
+album data/information while the Youtube API enables the user to listen to any track from any given album for free. React was used on the frontend with auto-fill capabilities for the input forms so that when the user attempts 
+to add a new album, we can be certain that the information (particularly the album name and artist name) being sent to the Spotify API is correct so that errors are minimal. 
