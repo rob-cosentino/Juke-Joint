@@ -8,6 +8,17 @@ Juke-Joint is a full-stack web application that allows users to create a digital
 * Autofill Suggestions: Provides autofill suggestions for album and artist names to ensure accurate data fetching.
 * Responsive UI: Features a carousel-style album display, mimicking the experience of a classic jukebox.
 
+## Features Walkthrough
+* Find an album that exists on Spotify by using the input fields (autofill/suggestions connected to the Spotify API ensures proper input validation for spotify content):
+<img width="1993" height="1230" alt="image" src="https://github.com/user-attachments/assets/2b277e31-6892-4ad2-989c-dad8d5b9c2d7" />
+
+* Once an album is added, it will appear in the UI:
+<img width="1971" height="1203" alt="image" src="https://github.com/user-attachments/assets/2e246fc6-ce13-4970-8b29-e3fbb7ec0012" />
+
+* When the user clicks on a song from the list of songs underneath the album cover, the app communicates with YouTube, pulling up the song from YouTube to be played within the app:
+<img width="1979" height="1218" alt="image" src="https://github.com/user-attachments/assets/9f7c37aa-d71b-4d1d-8840-e550bcdd8334" />
+
+
 ## Technologies
 * Frontend: React, Axios, Swiper for carousel implementation.
 * Backend: Node.js, Express.js, MongoDB for database management.
