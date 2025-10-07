@@ -22,7 +22,8 @@ Juke-Joint is a full-stack web application that allows users to create a digital
 
 
 * The user can add as many albums as they'd like. When more albums are added, the UI containing the albums turns into a carousel, simulating an actual JukeBox:
-* <img width="1798" height="1205" alt="image" src="https://github.com/user-attachments/assets/052f8af0-cef0-4c71-997d-622a7e7dfaf7" />
+<img width="1382" height="1157" alt="image" src="https://github.com/user-attachments/assets/ae183a33-a0cf-4025-890b-d11731c3c96e" />
+
 
 
 
